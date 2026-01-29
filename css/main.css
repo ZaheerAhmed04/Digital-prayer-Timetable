@@ -1,0 +1,389 @@
+/* =====================================================
+   ROOT VARIABLES
+===================================================== */
+:root {
+  --bg-main: #0b0f14;
+  --bg-panel: #0f172a;
+  --bg-glass: rgba(15, 23, 42, 0.65);
+
+  --border-glass: rgba(255,255,255,0.15);
+
+  --primary: #34d399;
+  --blue: #4fd1ff;
+  --yellow: #facc15;
+  --green: #22c55e;
+  --red: #ef4444;
+
+  --text-main: #e5e7eb;
+  --text-muted: #94a3b8;
+
+  --radius-sm: 10px;
+  --radius-md: 14px;
+  --radius-lg: 18px;
+
+  --shadow-soft: 0 10px 30px rgba(0,0,0,0.35);
+}
+
+/* =====================================================
+   RESET
+===================================================== */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  min-height: 100vh;
+  background: radial-gradient(circle at top, #0f2027, #020617);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+  color: var(--text-main);
+  padding: 14px;
+}
+
+/* =====================================================
+   MAIN CONTAINER
+===================================================== */
+.prayer-clock-container {
+  width: 100%;
+  max-width: 420px; /* Galaxy S8+ friendly */
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+/* =====================================================
+   DATE & DAY
+===================================================== */
+.date-day-wrapper {
+  text-align: center;
+}
+
+#current-date {
+  font-size: clamp(1.8rem, 6vw, 2.3rem);
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+
+#current-day {
+  font-size: 0.85rem;
+  letter-spacing: 2px;
+  color: var(--text-muted);
+  margin-top: 4px;
+}
+
+/* =====================================================
+   DIGITAL CLOCK
+===================================================== */
+.clock-display {
+  background: var(--bg-panel);
+  border-radius: var(--radius-lg);
+  padding: 18px;
+  text-align: center;
+  box-shadow: var(--shadow-soft);
+}
+
+.digital-clock {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 6px;
+}
+
+.digital-clock .time {
+  font-size: clamp(2.6rem, 8vw, 3.4rem);
+  font-weight: 700;
+  color: var(--blue);
+  letter-spacing: 1.5px;
+}
+
+.digital-clock .meridian {
+  font-size: 0.7rem;
+  margin-top: 10px;
+  letter-spacing: 1px;
+  color: var(--text-muted);
+}
+
+/* =====================================================
+   PRAYER INFO CAROUSEL
+===================================================== */
+.prayer-info-carousel {
+  background: linear-gradient(
+    135deg,
+    rgba(16,185,129,0.18),
+    rgba(2,6,23,0.92)
+  );
+  border-radius: var(--radius-lg);
+  padding: 14px 16px;
+  border: 1px solid var(--border-glass);
+  box-shadow: var(--shadow-soft);
+}
+
+.prayer-carousel-strip {
+  position: relative;
+  height: 30px;
+  overflow: hidden;
+}
+
+.prayer-info-item {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  font-size: clamp(0.9rem, 3vw, 1.05rem);
+  font-weight: 600;
+  opacity: 0;
+  transition: opacity 0.6s ease;
+  text-align: center;
+  white-space: nowrap;
+}
+
+.prayer-info-item span {
+  color: var(--primary);
+  font-weight: 700;
+}
+
+.prayer-info-item.active {
+  opacity: 1;
+}
+
+/* =====================================================
+   SUN INFO + COUNTDOWN
+===================================================== */
+.sun-info-carousel {
+  background: var(--bg-glass);
+  border-radius: var(--radius-lg);
+  padding: 14px;
+  border: 1px solid var(--border-glass);
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.sun-carousel-left {
+  position: relative;
+  height: 28px;
+  overflow: hidden;
+}
+
+.sun-info-item {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: clamp(0.9rem, 3vw, 1.05rem);
+  font-weight: 600;
+  opacity: 0;
+  transition: opacity 0.6s ease;
+}
+
+.sun-info-item.active {
+  opacity: 1;
+}
+
+.sun-carousel-right {
+  display: flex;
+  justify-content: center;
+}
+
+.countdown-box {
+  background: rgba(255,255,255,0.06);
+  padding: 8px 14px;
+  border-radius: var(--radius-md);
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.countdown-box .label {
+  font-size: 0.7rem;
+  color: var(--primary);
+  letter-spacing: 1px;
+}
+
+.countdown-box .time {
+  font-size: 1.1rem;
+  font-weight: 700;
+}
+
+/* =====================================================
+   PRAYER TABLE
+===================================================== */
+.timetable-section {
+  background: var(--bg-panel);
+  border-radius: var(--radius-lg);
+  padding: 14px;
+}
+
+.table-title {
+  text-align: center;
+  font-size: 0.75rem;
+  letter-spacing: 1px;
+  color: var(--text-muted);
+  margin-bottom: 10px;
+}
+
+.table-wrapper {
+  overflow-x: auto;
+}
+
+.prayer-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.prayer-table th,
+.prayer-table td {
+  padding: 10px;
+  font-size: 0.75rem;
+  text-align: center;
+}
+
+.prayer-table th {
+  color: var(--text-muted);
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+}
+
+.prayer-table td {
+  border-bottom: 1px solid rgba(255,255,255,0.05);
+}
+
+.prayer-name {
+  text-align: left;
+  color: var(--blue);
+  font-weight: 700;
+}
+
+.azan-time {
+  color: var(--yellow);
+  font-weight: 600;
+}
+
+.jamat-time {
+  color: var(--green);
+  font-weight: 700;
+}
+
+.urdu-name {
+  font-family: "Noto Nastaliq Urdu", serif;
+  font-size: 0.95rem;
+}
+
+/* =====================================================
+   TABLET (≥ 600px)
+===================================================== */
+@media (min-width: 600px) {
+  .prayer-clock-container {
+    max-width: 520px;
+    gap: 18px;
+  }
+
+  .sun-info-carousel {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .sun-carousel-left,
+  .sun-carousel-right {
+    width: 50%;
+  }
+}
+
+/* =====================================================
+   LAPTOP (≥ 900px)
+===================================================== */
+@media (min-width: 900px) {
+  .prayer-clock-container {
+    max-width: 720px;
+  }
+
+  .digital-clock .time {
+    font-size: 3.6rem;
+  }
+
+  .prayer-table th,
+  .prayer-table td {
+    font-size: 0.85rem;
+  }
+}
+
+/* =====================================================
+   LARGE SCREENS (≥ 1200px)
+===================================================== */
+@media (min-width: 1200px) {
+  body {
+    padding: 40px;
+  }
+
+  .prayer-clock-container {
+    max-width: 820px;
+  }
+}
+/* ================== URDU WARNING TEXT ================== */
+#warningEl {
+  display: block;                 /* Block for full width */
+  text-align: center;             /* Center text horizontally */
+  font-family: "Noto Nastaliq Urdu", "Noto Nastaliq", "Arial", sans-serif; /* Urdu font */
+  font-size: clamp(16px, 2vw, 24px);  /* Responsive font size */
+  line-height: 1.4;               /* Proper line spacing */
+  color: #22c55e;                 /* Default green for safe */
+  padding: 12px 16px;
+  border-radius: 10px;
+  background: rgba(0,0,0,0.45);   /* Semi-transparent dark bg */
+  box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+  margin: 12px auto;
+  max-width: 95%;
+  word-wrap: break-word;          /* Urdu words wrap properly */
+  direction: rtl;                 /* Right-to-left for Urdu */
+  transition: all 0.3s ease;
+}
+
+/* Red warning state */
+#warningEl.red {
+  color: #ef4444;                 /* Red text for warning */
+  background: rgba(255,0,0,0.1);
+  box-shadow: 0 4px 12px rgba(255,0,0,0.4);
+}
+
+/* Green safe state */
+#warningEl.green {
+  color: #22c55e;                 /* Green text for safe */
+  background: rgba(34,197,94,0.1);
+  box-shadow: 0 4px 12px rgba(34,197,94,0.4);
+}
+
+/* ================== MOBILE VIEW ================== */
+@media (max-width: 768px) {
+  #warningEl {
+    font-size: clamp(14px, 3vw, 20px); /* Slightly smaller for tablet/mobile */
+    padding: 10px 12px;
+  }
+}
+
+@media (max-width: 480px) {
+  #warningEl {
+    font-size: clamp(12px, 4vw, 18px); /* Mobile friendly font */
+    padding: 8px 10px;
+  }
+}
+
+/* ================== VERY SMALL DEVICES (Galaxy S8+ etc) ================== */
+@media (max-width: 360px) {
+  #warningEl {
+    font-size: clamp(11px, 4.5vw, 16px);
+    padding: 6px 8px;
+  }
+}

@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Digital Prayer Timetable Clock</title>
+    <!-- Main Styles -->
+    <link rel="stylesheet" href="css/main.css">
+</head>
+<body>
+
+    <main class="prayer-clock-container">
+
+        <!-- Clock Section -->
+        <section class="clock-section">
+           <div id="digital-clock" class="digital-clock"></div>
+        </section>
+
+        <!-- Date & Day Section -->
+        <section class="date-day-section">
+            <div id="current-date" class="date-display"></div>
+            <div id="current-day" class="day-display"></div>
+        </section>
+
+    
+<section class="timetable-section glass-panel">
+   <!-- ================= PRAYER INFO CAROUSEL ================= -->
+<div class="prayer-info-carousel">
+
+  <div class="prayer-carousel-strip">
+    <div class="prayer-info-item">
+      🌙 Tahajjud Ends: <span id="tahajjudTime">--:--</span>
+    </div>
+
+    <div class="prayer-info-item">
+      🌤️ Ishraq: <span id="ishraqTime">--:--</span>
+    </div>
+
+    <div class="prayer-info-item">
+      ☀️ Chasht: <span id="chashtTime">--:--</span>
+    </div>
+
+    <div class="prayer-info-item">
+      🌅 Tulu (Sunrise): <span id="tuluTime">--:--</span>
+    </div>
+
+    <div class="prayer-info-item">
+      🚫 Zawal: <span id="zawalTime">✔</span>
+    </div>
+
+    <div class="prayer-info-item">
+      🌇 Ghurub (Sunset): <span id="gurubTime">--:--</span>
+    </div>
+
+    <div class="prayer-info-item">
+      🌙 Sehri Ends: <span id="sehriTime">--:--</span>
+    </div>
+
+    <div class="prayer-info-item">
+      🍽️ Iftar: <span id="iftarTime">--:--</span>
+    </div>
+
+    <div class="prayer-info-item">
+      🕌 Hijri Date: <span id="hijriDate">--</span>
+    </div>
+
+    <div class="prayer-info-item">
+      📿 Arabic Month: <span id="arabicMonth">--</span>
+    </div>
+
+    <div class="prayer-info-item">
+      🌡️ Temperature: <span id="temperature">--°C</span>
+    </div>
+  </div>
+
+</div>
+
+
+    <table class="prayer-table">
+        <thead>
+            <tr>
+                <th>Prayer</th>
+                <th>Azan</th>
+                <th>Jamat</th>
+                <th class="urdu-col">نماز</th>
+            </tr>
+        </thead>
+
+        <tbody id="prayerTable">
+            <!-- Dynamic rows -->
+        </tbody>
+    </table>
+</section>
+
+<div class="sun-info-carousel glass-panel" id="sunInfoCarousel">
+
+  <!-- LEFT : CAROUSEL STRIP -->
+  <div class="sun-carousel-left">
+    <div class="sun-info-item">
+      🌅 Sunrise: <span id="sunriseTime">--:--</span>
+    </div>
+    <div class="sun-info-item">
+      🌇 Sunset: <span id="sunsetTime">--:--</span>
+    </div>
+    <div class="sun-info-item">
+   
+      ☀️ Makrooh Time: <span id="zawalWarning">✔</span>
+    </div>
+    <div class="sun-info-item">
+      🕛 Zuhr Starts: <span id="zuhrTime">--:--</span>
+    </div>
+  </div>
+
+  <!-- RIGHT : FIXED COUNTDOWN -->
+  <div class="sun-carousel-right">
+    <div class="countdown-box">
+      <div class="countdown-label">Next Prayer</div>
+      <div class="countdown-name" id="next-prayer-name">...</div>
+      <div class="countdown-time" id="countdown">--:--:--</div>
+    </div>
+  </div>
+
+</div>
+    </main>
+
+    <!-- Scripts (order matters) -->
+    <script src="js/clock.js"></script>
+    <script src="js/day-detection.js"></script>
+    <script src="js/prayer-logic.js"></script>
+    <script src="js/prayer-info-carousel.js"></script>
+    <script src="js/timetable.js"></script>
+ <script src="js/prayer-info.js"></script>
+</body>
+</html>
